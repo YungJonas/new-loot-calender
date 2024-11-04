@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Advent Calendar</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="date-display-fixed">
+        <div class="month">December</div>
+        <div id="currentDay" class="day">1</div>
+    </div>
+
+    <div id="scrollContainer" class="scroll-container">
+    </div>
+
+    <div id="modal" class="modal">
+        <div class="modal-content">
+            <button class="close-modal">×</button>
+            <h2 id="modalTitle"></h2>
+            <img id="modalImage" alt="Daily surprise">
+        </div>
+    </div>
+
+    <script src="scripts.js" defer></script>
+</body>
+</html>

@@ -90,40 +90,47 @@ body {
     position: relative;
     overflow: hidden;
     transition: all var(--transition-duration) cubic-bezier(0.4, 0, 0.2, 1);
-    background: rgba(255, 255, 255, 0.1);
-    -webkit-backdrop-filter: blur(5px);
-    backdrop-filter: blur(5px);
-    border: 1px solid rgba(255, 255, 255, 0.1);
     min-height: 300px;
 }
 
-.shape-background {
+.shapes-bg {
     position: absolute;
     inset: 0;
-    width: 100%;
-    height: 100%;
-    pointer-events: none;
+    filter: blur(35px);
+    transform: scale(1.1);
 }
 
-.shapes-container {
+.noise-layer {
     position: absolute;
-    inset: -50%;
-    width: 200%;
-    height: 200%;
-    transform: translateZ(0);
-    -webkit-transform: translateZ(0);
-    will-change: transform;
+    inset: 0;
+    opacity: 0.05;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+    mix-blend-mode: overlay;
 }
 
-/* Add hardware acceleration hints */
-.shape-background * {
-    -webkit-transform: translateZ(0);
-    transform: translateZ(0);
-    -webkit-backface-visibility: hidden;
-    backface-visibility: hidden;
-    -webkit-perspective: 1000;
-    perspective: 1000;
+@keyframes float2 {
+    0% {
+        transform: translate(-50%, -50%) rotate(0deg) scale(1);
+    }
+    25% {
+        transform: translate(-52%, -48%) rotate(-3deg) scale(0.98);
+    }
+    50% {
+        transform: translate(-48%, -52%) rotate(4deg) scale(1.03);
+    }
+    75% {
+        transform: translate(-52%, -52%) rotate(-2deg) scale(0.97);
+    }
+    100% {
+        transform: translate(-50%, -50%) rotate(0deg) scale(1);
+    }
 }
+
+.shapes-bg {
+    filter: blur(45px);
+    transform: scale(1.2);
+}
+
 
 .slide.active .calendar-day {
     opacity: 1;
@@ -281,3 +288,23 @@ body {
     }
 
 }
+
+/* Add these styles to your existing CSS */
+@keyframes float1 {
+    0% {
+        transform: translate(-50%, -50%) rotate(0deg) scale(1);
+    }
+    25% {
+        transform: translate(-48%, -52%) rotate(5deg) scale(1.05);
+    }
+    50% {
+        transform: translate(-52%, -48%) rotate(-2deg) scale(0.95);
+    }
+    75% {
+        transform: translate(-48%, -48%) rotate(3deg) scale(1.02);
+    }
+    100% {
+        transform: translate(-50%, -50%) rotate(0deg) scale(1);
+    }
+}
+
